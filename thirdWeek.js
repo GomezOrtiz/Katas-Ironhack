@@ -74,3 +74,19 @@ const isBalanced = (s, caps) => {
         }
     
     // SCRAMBLIES
+
+    const scramble = (str1, str2) => {
+
+      let checked = {}
+    
+      for (let i = 0; i < str2.length; i++){
+
+        let letter = str2[i]
+        let idxInFirst = letter in checked ? str1.indexOf(letter,checked[letter] + 1) : str1.indexOf(letter) 
+
+        if(idxInFirst >= 0) checked[letter] = idxInFirst 
+        else return false
+      }
+      return true
+    }
+    
