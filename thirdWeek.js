@@ -81,12 +81,16 @@ const isBalanced = (s, caps) => {
     
       for (let i = 0; i < str2.length; i++){
 
-        let letter = str2[i]
+        let letter = str2[i] 
+
+        // Busco la letra de la cadena 2 en la cadena 1 y me guardo su posición. Si la letra ya había sido comprobada previamente (está en checked), quiero mirar a partir del que fue su primer índice; si no, desde el principio de la cadena
         let idxInFirst = letter in checked ? str1.indexOf(letter,checked[letter] + 1) : str1.indexOf(letter) 
 
+        // Si no la ha encontrado (índice negativo), retorno false. Si la ha encontrado, actualizo el índice en checked para la próixima vez que tenga que buscar la misma letra
         if(idxInFirst >= 0) checked[letter] = idxInFirst 
         else return false
       }
+      // Si no he retornado false en ningún momento del bucle, todas las letras estaban. Retorno true. 
       return true
     }
     
